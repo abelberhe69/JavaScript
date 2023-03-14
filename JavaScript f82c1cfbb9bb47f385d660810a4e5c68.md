@@ -163,6 +163,137 @@ const cars = ["Saab", "Volvo", "BMW"]; // Accessing full array with JS
 document.getElementById("demo").innerHTML = cars;
 ```
 
-[DOM](https://www.notion.so/DOM-6249e51986ba42478a8a4563f2381b94)
+### **DOM**
 
-[JSON](https://www.notion.so/JSON-2e409d158af64a84a230047ad35864e1)
+- A different way of representing HTML documents, and we can manipulate the attributes of the objects to modify them
+- JS can easily understand the object model hierarchy than the HTML document
+- Frames help JS access objects
+- JS looks at the objects in terms of nodes. There are 3 types of nodes
+    - Element Node: A tag
+    - Attribute Node: JS can access the element using the id and perform manipulations
+    - Text Node: Content inside the element
+- We can access elements of HTML by using the tag name, id, class name
+    - **Using tag name:** takes a tag name as a string parameter and returns an object
+    
+    ```jsx
+    document.getElementsByTagName('tagName') // Syntax
+    ```
+    
+    - **Using class name:** Returns an HTML collection object
+    
+    ```jsx
+    document.getElementsByClassName('className') // Syntax
+    ```
+    
+    - **Using an id**: Targets a single HTML element
+    
+    ```jsx
+    document.getElementById('id') // Syntax
+    ```
+    
+- Adding attribute
+
+```jsx
+const titles = document.querySelectorAll('h1')
+titles[3].className = 'title' // Added a class attribute to the 4th title
+titles[3].id = 'fourth-title' // Added an id attribute to the 4th title
+titles[5].setAttribute('class', 'title') // Adding attribute using setAttribute()
+titles[5].setAttribute('id', 'fourth-title') // Adding attribute using setAttribute()
+titles[3].classList.remove('title', 'header-title') // Removing a class
+titles[3].classList.add('title', 'header-title') // Appending classes, not over-ride
+```
+
+- Adding text
+    - textContent is meant to add text to an HTML element, however, innerHTML can add a text or HTML element or elements as a child
+    
+    ```jsx
+    const titles = document.querySelectorAll('h1')
+    titles[3].textContent = 'Fourth Title' // Using textContent property
+    ```
+    
+- Adding style
+
+```jsx
+const titles = document.querySelectorAll('h1')
+titles.forEach((title, i) => {
+  title.style.fontSize = '24px' // All titles will have 24px font size
+  if (i % 2 === 0) {
+    title.style.color = 'green' // If the index is even, color will be green
+  } else {
+    title.style.color = 'red' // Else the color will be red
+  }
+})
+```
+
+### **JSON**
+
+- Stands for JavaScript Object Notation
+- The format is text or string only
+- Mostly used when data is sent from a server to a client
+- The main difference that has with an object is that we use double quotation here
+    - JSON.parse(): a method, to **convert** from JSON to an object
+    
+    ```jsx
+    JSON.parse(json[, reviver])
+    ```
+    
+    - JSON.stringify(): a method, to **convert** the object to JSON
+    
+    ```jsx
+    JSON.stringify(obj, replacer, space)
+    /* These two are optional parameters
+    	 Replacer: Used as filter
+    	 Space: Used as indentations
+    */
+    ```
+    
+    ### **Session Storage & Local Storage**
+    
+    - **sessionStorage**: Only available within the browser tab or window session
+        - Designed to store data in a single web page session
+        - If the window is closed the session data will be removed
+    - **localStorage**: Used to store data on the browser with no expiration data
+        - Data will be available on the browser even after the browser is closed
+        - Is kept even between browser sessions
+        - While storing an array, the object must be stringify’d first
+        
+        ```jsx
+        localStorage.setItem('key', 'value') // Syntax
+        localStorage.setItem('firstName', 'Abel') // Storing a string in localStorage
+        console.log(localStorage)
+        localStorage.getItem('key') // Getting data from localStorage
+        localStorage.clear() // Clearing everything stored inside localStorage
+        ```
+        
+        ### **Event Listeners**
+        
+        - Can be added to any DOM object
+        - addEventListener() method takes 2 arguments, an event listener and a callback function
+        - Common events are onclick, onchange, onmouseover, onkeyup, onload…
+        
+        ```jsx
+        
+        selectedElement.addEventListener('eventlistner', function(e) {
+          // The activity you want to occur after the event will be in here
+        })
+        // or
+        selectedElement.addEventListener('eventlistner', e => {
+          // The activity you want to occur after the event will be in here
+        })
+        ```
+        
+        - List of events:
+            - click - when the element clicked
+            - dblclick - when the element double clicked
+            - mouseenter - when the mouse point enter to the element
+            - mouseleave - when the mouse pointer leave the element
+            - mousemove - when the mouse pointer move on the element
+            - mouseover - when the mouse pointer move on the element
+            - mouseout -when the mouse pointer out from the element
+            - input -when value enter to input field
+            - change -when value change on input field
+            - blur -when the element is not focused
+            - keydown - when a key is down
+            - keyup - when a key is up
+            - keypress - when we press any key
+            - onload - when the browser has finished loading a page

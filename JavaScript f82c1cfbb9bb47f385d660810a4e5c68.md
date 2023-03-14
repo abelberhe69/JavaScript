@@ -162,3 +162,7 @@ const cars = new Array("Saab", "Volvo", "BMW"); // new keyword creates an array
 const cars = ["Saab", "Volvo", "BMW"]; // Accessing full array with JS
 document.getElementById("demo").innerHTML = cars;
 ```
+
+[DOM](https://www.notion.so/DOM-6249e51986ba42478a8a4563f2381b94)
+
+[JSON](https://www.notion.so/JSON-2e409d158af64a84a230047ad35864e1)
